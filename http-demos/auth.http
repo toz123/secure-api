@@ -1,6 +1,10 @@
 //@base=http://localhost:8001
-@base=https://armoney-api-2020.herokuapp.com
-//@base=https://armoney-api-2020-staging.herokuapp.com
+@base=https://secure-api-staging.herokuapp.com
+//@base=https://secure-api-prod.herokuapp.com
+
+// Update this with the token that comes back from
+// api/auth/register or api/auth/signin
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyLWlkIjoxLCJpYXQiOjE2MDc0Njc0NDEsImV4cCI6MTYwNzQ2ODY0MX0.KCC70w1UVGu67q5UG5cyjaGfgv76dVpm8fwdIWqFd8I
 
 ### Hi
 GET {{base}}/hi
@@ -34,4 +38,4 @@ Content-Type: application/json
 
 ### Get own profile
 GET {{base}}/api/auth/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyLWlkIjoxLCJpYXQiOjE2MDY1NjQ1MDksImV4cCI6MTYwNjU2NTcwOX0.rqg_r8b8NuCEM-3TmKfvccCh8o1zKbEnaA45y6Cmouc
+Authorization: Bearer {{token}}
