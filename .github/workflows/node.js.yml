@@ -1,0 +1,32 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - name: Set environment variables
+      run: echo "NODE_ENV=test" >> $GITHUB_ENV
+    - name: Prepare dependencies
+      run: |
+        npm ci
+        npm run build --if-present
+    - name: Run all tests
+      run: npm test
+    - name: Archive test and code-coverage results
+      uses: actions/upload-artifact@v2
+      if: ${{ always() }}
+      with:
+        name: test-and-code-coverage-report
+        path: test-results.txt

@@ -1,0 +1,54 @@
+{
+  "name": "armoney-api-2020",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "@awaitjs/express": "^0.6.3",
+    "debug": "^4.3.1",
+    "express": "^4.17.1",
+    "express-validator": "^6.7.0",
+    "helmet": "^4.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.21.12",
+    "lodash.clonedeep": "^4.5.0",
+    "mysql2": "^2.2.5",
+    "per-env": "^1.0.2",
+    "pg": "^7.18.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.14.0",
+    "eslint-config-google": "^0.14.0",
+    "expect": "^26.6.2",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "supertest": "^6.0.1"
+  },
+  "scripts": {
+    "postinstall": "per-env",
+    "postinstall:development": "npm run run-db && npm run reset-db && npm run migrate-db",
+    "postinstall:test": "npm run run-db",
+    "postinstall:production": "",
+    "test": "npm run lint && npm run test-with-coverage",
+    "pretest": "npm run reset-db -- --env test && npm run migrate-db -- --env test",
+    "test-with-coverage": "NODE_ENV=test bash -o pipefail -c \"nyc mocha test/**/*.spec.js --exit | tee test-results.txt\"",
+    "lint": "eslint ./",
+    "run-db": "docker-compose up -d postgres && until [ $(docker inspect -f {{.State.Health.Status}} postgres) = \"healthy\" ]; do sleep 1; done",
+    "reset-db": "knex migrate:rollback --all --knexfile src/config/knexfile.js",
+    "migrate-db": "knex migrate:latest --knexfile src/config/knexfile.js",
+    "seed-db": "knex seed:run --knexfile src/config/knexfile.js",
+    "dev": "nodemon src/index.js",
+    "predev": "npm run migrate-db",
+    "start": "node src/index.js",
+    "adminer": "docker-compose up -d adminer",
+    "down": "docker-compose down"
+  },
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": "12.x"
+  }
+}

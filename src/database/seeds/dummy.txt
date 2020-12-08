@@ -1,0 +1,2 @@
+This file is here just so the seeds directory gets deployed
+(it wouldn't if it were empty).
