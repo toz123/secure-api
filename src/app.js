@@ -19,7 +19,7 @@ module.exports = function() {
 
   /* istanbul ignore next */
   app.get('/hi', (req, res) => {
-    res.status(200).send('Hi there! A3(b)');
+    res.status(200).send('Hi there!');
   });
 
   return app;

@@ -11,6 +11,7 @@ module.exports = {
     'ecmaVersion': 12,
   },
   'rules': {
-    'comma-dangle': 'off'
+    'comma-dangle': 'off',
+    'linebreak-style': 'off'
   },
 };
