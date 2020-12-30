@@ -12,6 +12,7 @@ module.exports = {
   },
   'rules': {
     'comma-dangle': 'off',
-    'linebreak-style': 'off'
+    'linebreak-style': 'off',
+    'max-len': 'off'
   },
 };

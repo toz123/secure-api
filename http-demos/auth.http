@@ -1,5 +1,5 @@
-//@base=http://localhost:8001
-@base=https://secure-api-staging.herokuapp.com
+@base=http://localhost:8001
+//@base=https://secure-api-staging.herokuapp.com
 //@base=https://secure-api-prod.herokuapp.com
 
 // Update this with the token that comes back from

@@ -3,13 +3,11 @@ version: '3.3'
 services:
   adminer:
     image: adminer
-    container_name: adminer
     restart: always
     ports:
       - 9100:8080
 
   mysql:
-    container_name: mysql
     build:
       context: ./docker/mysql
     command: --default-authentication-plugin=mysql_native_password
@@ -25,7 +23,6 @@ services:
       - 9101:3306
   
   postgres:
-    container_name: postgres
     build:
       context: ./docker/postgres
     restart: always

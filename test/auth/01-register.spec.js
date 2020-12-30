@@ -7,6 +7,7 @@ let request;
 
 describe('auth/register', function() {
   before(function() {
+    this.timeout(20000);
     const app = require('../../src/app')();
     request = supertest(app);
   });
